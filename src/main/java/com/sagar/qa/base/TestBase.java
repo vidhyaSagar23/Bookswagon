@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -13,6 +15,14 @@ import com.sagar.qa.util.TestUtil;
 
 public class TestBase {
 
+
+	public Logger log = LogManager.getLogger(TestBase.class);
+//
+//	public ExtentReports extent = new ExtentReports();
+//
+//	public ExtentSparkReporter spark= new ExtentSparkReporter("test-output/ExtentReport.html");
+//
+//	ExtentTest test;
 	public static WebDriver driver;
 	public static Properties props;
 	
@@ -26,17 +36,17 @@ public class TestBase {
 			e.printStackTrace();
 		} 
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
 	
-	public static void initialization() {
+	public void initialization() {
+		log.info("Brower Name :" + props.getProperty("brower"));
 		String browserName = props.getProperty("browser"); 
 		if(browserName.equals("chrome")) {
 			driver=new ChromeDriver();
 		}
-		
+		log.info("Application URL : "+props.getProperty("url"));
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);

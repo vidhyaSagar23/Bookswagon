@@ -31,6 +31,7 @@ public class HomePageTest extends TestBase{
     }
     @Test(dataProvider = "getLoginTestData", priority = 1)
     public void login(String title) throws InterruptedException {
+        System.out.println(number+" "+password);
         home.inputBar(number,password,title);
     }
 

@@ -26,16 +26,26 @@ public class LoginTest extends TestBase{
         return data;
     }
 
-    @Test(dataProvider = "getLoginTestData", priority = 1)
+    @Test(dataProvider = "getLoginTestData", priority = 2)
+//    @Severity(SeverityLevel.CRITICAL)
+//    @Description("Multiple user try to login the application")
+//    @Feature("Login : 2")
+//    @Story("User enter the valid username and password then login the application")
     public void login(String phoneNumber, String password) throws InterruptedException {
+        log.info("Multiple user login method");
         login.login(phoneNumber, password);
     }
 
-
-    @Test
+    @Test(priority = 1)
+//    @Severity(SeverityLevel.CRITICAL)
+//    @Description("User login the application")
+//    @Feature("Login : 1")
+//    @Story("User enter the valid username and password then login the application")
     public void singleUserLogin() throws InterruptedException {
+        log.info("Single user Login method running..");
         login.singleUserLogin(props.getProperty("phonenumber"),props.getProperty("password"));
     }
+
     @AfterMethod
     public void close(){
         testBase.close();

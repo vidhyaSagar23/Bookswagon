@@ -22,20 +22,16 @@ public class Login extends TestBase {
     }
 
     public void login(String phoneNumber, String password) throws InterruptedException {
+//        ExtentTest test =extent.createTest("MultipleUserLogin");
         this.phoneNumber.sendKeys(phoneNumber);
-        Thread.sleep(2000);
         this.password.sendKeys(password);
-        Thread.sleep(2000);
         this.loginButton.click();
-        Thread.sleep(2000);
     }
 
     public void singleUserLogin(String phoneNumber, String password) throws InterruptedException {
+//        ExtentTest test = extent.createTest("Login");
         this.phoneNumber.sendKeys(phoneNumber);
-        Thread.sleep(2000);
         this.password.sendKeys(password);
-        Thread.sleep(2000);
         this.loginButton.click();
-        Thread.sleep(2000);
     }
 }
