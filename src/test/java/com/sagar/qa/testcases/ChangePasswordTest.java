@@ -3,11 +3,9 @@ package com.sagar.qa.testcases;
 import com.sagar.qa.base.TestBase;
 import com.sagar.qa.pages.ChangePassword;
 import com.sagar.qa.util.TestUtil;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
+@Listeners({com.sagar.qa.listeners.Listeners.class})
 public class ChangePasswordTest extends TestBase {
 
     String number=props.getProperty("phonenumber");
@@ -30,11 +28,13 @@ public class ChangePasswordTest extends TestBase {
 
     @Test(dataProvider = "getLoginTestData")
     public void changePass(String pass, String newPass, String confirmPass) throws InterruptedException {
+        log.info("Change Password method is executing");
         changePassword.changePass(pass,newPass,confirmPass,number,password);
     }
 
     @Test(dataProvider = "getLoginTestData")
     public void changePassCancel(String pass, String newPass, String confirmPass) throws InterruptedException {
+        log.info("Cancel Change password method is executing");
         changePassword.changePassCancel(pass,newPass,confirmPass,number,password);
     }
 

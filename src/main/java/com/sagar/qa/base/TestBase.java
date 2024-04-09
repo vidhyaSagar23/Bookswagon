@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.LogManager;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,14 +17,13 @@ import com.sagar.qa.util.TestUtil;
 
 public class TestBase {
 
+	public Logger log = Logger.getLogger(TestBase.class);
 
-	public Logger log = LogManager.getLogger(TestBase.class);
-//
-//	public ExtentReports extent = new ExtentReports();
-//
-//	public ExtentSparkReporter spark= new ExtentSparkReporter("test-output/ExtentReport.html");
-//
-//	ExtentTest test;
+	public ExtentReports extent = new ExtentReports();
+
+	public ExtentSparkReporter spark= new ExtentSparkReporter("test-output/ExtentReport.html");
+
+	ExtentTest test;
 	public static WebDriver driver;
 	public static Properties props;
 	
@@ -41,7 +42,7 @@ public class TestBase {
 	}
 	
 	public void initialization() {
-		log.info("Brower Name :" + props.getProperty("brower"));
+		log.info("Brower Name :" + props.getProperty("browser"));
 		String browserName = props.getProperty("browser"); 
 		if(browserName.equals("chrome")) {
 			driver=new ChromeDriver();

@@ -2,13 +2,10 @@ package com.sagar.qa.testcases;
 
 import com.sagar.qa.base.TestBase;
 import com.sagar.qa.pages.AddAddress;
-import com.sagar.qa.pages.HomePage;
 import com.sagar.qa.util.TestUtil;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
+@Listeners({com.sagar.qa.listeners.Listeners.class})
 public class AddAddressTest extends TestBase {
 
     AddAddress addAddress;
@@ -31,6 +28,7 @@ public class AddAddressTest extends TestBase {
     }
     @Test(dataProvider = "getLoginTestData")
     public void addAddress(String name, String companyName, String streetAddress, String landmark) throws InterruptedException {
+        log.info("Add address method is executing");
         addAddress.addAddress(name, companyName, streetAddress, landmark, pincode, number, password);
     }
     @AfterMethod
